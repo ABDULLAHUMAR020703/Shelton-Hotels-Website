@@ -268,16 +268,17 @@ function sendViaEmail(){
  *  Hotels with rawNames === true store full filenames in groups (no extension appended). */
 function thumbPath(photos, name) {
   if (photos.rawNames) return `${photos.dir}/${name}`;
+  const ext = photos.ext || 'jpg';
   return photos.hasThumb === false
-    ? `${photos.dir}/${name}.jpg`
-    : `${photos.dir}/${name}_t.jpg`;
+    ? `${photos.dir}/${name}.${ext}`
+    : `${photos.dir}/${name}_t.${ext}`;
 }
 
 /** Returns the full-size URL for a gallery image. */
 function fullPath(photos, name) {
-  return photos.rawNames
-    ? `${photos.dir}/${name}`
-    : `${photos.dir}/${name}.jpg`;
+  if (photos.rawNames) return `${photos.dir}/${name}`;
+  const ext = photos.ext || 'jpg';
+  return `${photos.dir}/${name}.${ext}`;
 }
 
 function countPhotos(b){
