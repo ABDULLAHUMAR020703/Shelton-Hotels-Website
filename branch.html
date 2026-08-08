@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="has-top-bar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Detail — Shelton Hotels Pakistan</title>
+<meta name="description" content="Branch details, photos and direct booking — Shelton Hotels Pakistan.">
+<link rel="icon" href="assets/img/mark-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Branch page additional refinements */
+  .branch-detail-wrap {
+    background: var(--cream);
+  }
+
+  /* Feature strip */
+  .branch-features-strip {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0;
+  }
+
+  .branch-features-strip-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .branch-features-strip-inner::-webkit-scrollbar { display: none; }
+
+  .branch-feat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 22px 28px;
+    border-right: 1px solid var(--line);
+    min-width: 120px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .branch-feat-item:first-child { border-left: 1px solid var(--line); }
+
+  .branch-feat-item-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .branch-feat-item-label {
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Mobile sticky CTA bar */
+  .sticky-book-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(250,248,244,0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line);
+    padding: 14px 20px;
+    z-index: 500;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 -4px 24px rgba(12,10,20,0.08);
+  }
+
+  .sticky-book-bar.visible { display: flex; }
+
+  .sticky-book-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sticky-book-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .sticky-book-city {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-book-bar { display: flex; }
+  }
+
+  /* Room pricing table */
+  .room-pricing-table {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+
+  .room-pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+
+  .room-pricing-row:last-child { border-bottom: none; }
+
+  .room-pricing-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--sans);
+  }
+
+  .room-pricing-detail {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .room-pricing-price {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gold-deep);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body class="page-enter">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="top-bar" id="top-bar" role="navigation" aria-label="Site utility navigation">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <a href="index.html"    class="top-bar-link">Shelton Home</a>
+      <a href="branches.html" class="top-bar-link">Our Destinations</a>
+      <a href="about.html"    class="top-bar-link">About</a>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-bar-contact">Bookings: <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Shelton Hotels — Home">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels logo mark">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav class="main-nav" id="main-nav" role="navigation">
+      <a href="index.html">Home</a>
+      <a href="branches.html" class="active">Hotels</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="branches.html" id="nav-book-btn">Book a Stay</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ BRANCH DETAIL (JS-rendered) ============ -->
+<main data-branch-page class="branch-detail-wrap"></main>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="sticky-book-bar" id="sticky-bar" role="complementary" aria-label="Quick booking">
+  <div class="sticky-book-info">
+    <span class="sticky-book-name" id="sticky-name">Loading…</span>
+    <span class="sticky-book-city" id="sticky-city"></span>
+  </div>
+  <button class="btn btn-gold" id="sticky-book-btn">Book Now</button>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+      <p class="foot-txt">Locally rooted hospitality across Khyber Pakhtunkhwa and Punjab. 24 properties, 10 cities.</p>
+      <div class="foot-contact">
+        <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Shelton Hotels on Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Shelton Hotels on TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="branches.html">All hotels</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="branches.html#peshawar">Peshawar</a></li>
+        <li><a href="branches.html#islamabad">Islamabad</a></li>
+        <li><a href="branches.html#lahore">Lahore</a></li>
+        <li><a href="branches.html#swat">Swat &amp; Dir</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Book Direct</h4>
+      <ul>
+        <li><a href="mailto:Bookings@tmhotels.com">Email booking</a></li>
+        <li><a href="contact.html">Corporate enquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Shelton Hotels. All rights reserved.</span>
+    <span>sheltonhotels.com</span>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal-backdrop" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-branch-name">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close booking form">✕</button>
+    <h3 id="modal-branch-name">Book Your Stay</h3>
+    <p class="modal-sub" id="modal-branch-sub"></p>
+    <form id="booking-form" novalidate>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input id="f-name" type="text" placeholder="Your full name" autocomplete="name">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-checkin">Check-in</label>
+          <input id="f-checkin" type="date">
+        </div>
+        <div class="field">
+          <label for="f-checkout">Check-out</label>
+          <input id="f-checkout" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-guests">Number of Guests</label>
+        <input id="f-guests" type="number" min="1" placeholder="2">
+      </div>
+      <div class="field">
+        <label for="f-notes">Notes &amp; Room Preference</label>
+        <textarea id="f-notes" rows="2" placeholder="Twin room, late check-in, etc."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-gold btn-block" id="send-whatsapp">Send via WhatsApp</button>
+        <button type="button" class="btn btn-ghost btn-block" id="send-email">Send via Email</button>
+        <button type="button" class="btn btn-block" disabled>Pay Online — coming soon</button>
+        <p class="pay-note">Card payment will be added once our payment gateway goes live.</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Nav scroll behaviour — start transparent since branch hero is full-bleed */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  /* Mobile nav */
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav   = document.getElementById('main-nav');
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mainNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Sticky book bar — populate after branch page is rendered */
+  function initStickyBar() {
+    const params = new URLSearchParams(location.search);
+    let branchId = params.get('id');
+    if (!branchId) {
+      branchId = localStorage.getItem('selected_branch_id');
+    }
+    const b = branchById(branchId);
+    if (!b) return;
+
+    const bar = document.getElementById('sticky-bar');
+    document.getElementById('sticky-name').textContent = b.name;
+    document.getElementById('sticky-city').textContent = b.city + (b.area ? ' · ' + b.area : '');
+
+    document.getElementById('sticky-book-btn').addEventListener('click', () => {
+      openBookingModal(b.id);
+    });
+
+    /* Show bar only after scrolling past hero */
+    window.addEventListener('scroll', () => {
+      bar.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+
+
+
+  /* Scroll to top */
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* Wait for DOM to be ready after main.js renders branch page */
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initStickyBar, 100);
+  });
+</script>
+
+<!-- ============ SCROLL TO TOP ============ -->
+<button class="scroll-to-top" id="scroll-top-btn" aria-label="Scroll to top of page">↑</button>
+
+</body>
+</html>

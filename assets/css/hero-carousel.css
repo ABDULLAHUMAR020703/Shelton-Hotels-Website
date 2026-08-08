@@ -1,0 +1,141 @@
+/* ============================================================
+   HERO CAROUSEL — isolated styles
+   All rules are scoped to .hc-* to avoid collisions.
+   ============================================================ */
+
+/* ---------- Carousel stage (replaces .hero-bg) ---------- */
+.hc-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* Fallback background while first image loads */
+  background: var(--navy, #0c0a14);
+  z-index: 0;
+}
+
+/* ---------- Individual slide ---------- */
+.hc-slide {
+  position: absolute;
+  inset: 0;
+  will-change: opacity, transform;
+  /* GPU layer — avoids compositing surprises */
+  transform: translateZ(0);
+}
+
+/* ---------- Cover image ---------- */
+/*
+ * object-position uses a CSS custom property so each slide can
+ * declare its own framing without any JavaScript media query logic.
+ *
+ * --hc-pos         set by JS per-slide for all breakpoints
+ * --hc-pos-tablet  optional per-slide tablet override
+ * --hc-pos-mobile  optional per-slide mobile override
+ *
+ * If the per-slide variable is not defined, CSS falls back to
+ * the globally responsive default defined in each media block.
+ *
+ * Vertical default: 70%  → image anchor sits 70% down the frame,
+ * which keeps building facades visible and reduces empty sky.
+ */
+.hc-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* Desktop: per-slide position, or the default 70% anchor */
+  object-position: var(--hc-pos, center 70%);
+
+  /* Prevent any gap below image */
+  vertical-align: bottom;
+  /* GPU compositing */
+  will-change: transform;
+  transform: translateZ(0);
+  box-sizing: border-box;
+}
+
+/* Tablet (≤ 900 px) */
+@media (max-width: 900px) {
+  .hc-slide img {
+    /*
+     * Falls through:  per-slide tablet override
+     *                 → per-slide desktop value
+     *                 → global tablet default 68%
+     */
+    object-position: var(--hc-pos-tablet, var(--hc-pos, center 68%));
+  }
+}
+
+/* Mobile (≤ 600 px) */
+@media (max-width: 600px) {
+  .hc-slide img {
+    /*
+     * Falls through:  per-slide mobile override
+     *                 → per-slide desktop value
+     *                 → global mobile default 65%
+     */
+    object-position: var(--hc-pos-mobile, var(--hc-pos, center 65%));
+  }
+}
+
+/* ---------- Opacity states ---------- */
+.hc-slide {
+  opacity: 0;
+  /* Crossfade duration = 1.6s */
+  transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hc-slide.hc-active {
+  opacity: 1;
+}
+
+/* ---------- Ken Burns (zoom) animation ---------- */
+/*
+ * Each slide starts at scale(1.07) and slowly zooms to scale(1.0)
+ * over the full display duration set via --hc-duration on the slide.
+ * When inactive the slide resets instantly (no CSS transition on img).
+ * The animation is attached only when the slide is active so the
+ * inactive slide doesn't accumulate or drift from its starting zoom.
+ */
+@keyframes hc-kenburns {
+  from { transform: scale(1.07) translateZ(0); }
+  to   { transform: scale(1.00) translateZ(0); }
+}
+
+.hc-slide.hc-active img {
+  /* --hc-duration is set per-slide by JS (hold + fade time) */
+  animation: hc-kenburns var(--hc-duration, 8600ms) ease-out forwards;
+}
+
+/* Reset zoom instantly when slide is not active */
+.hc-slide:not(.hc-active) img {
+  animation: none;
+  transform: scale(1.07) translateZ(0);
+}
+
+/* ---------- Dark gradient overlay ---------- */
+/*
+ * Mirrors the exact overlay from the original .hero-bg::after so
+ * the hero content is always readable regardless of slide image.
+ */
+.hc-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top,  rgba(10,8,18,0.85) 0%, rgba(10,8,18,0.40) 45%, rgba(10,8,18,0.15) 100%),
+    linear-gradient(to right, rgba(10,8,18,0.50) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hc-slide {
+    transition: opacity 0.8s ease;
+  }
+  .hc-slide.hc-active img,
+  .hc-slide:not(.hc-active) img {
+    animation: none;
+    transform: scale(1.0) translateZ(0);
+  }
+}

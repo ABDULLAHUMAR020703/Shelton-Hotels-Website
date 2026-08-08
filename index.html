@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" class="has-top-bar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shelton Hotels — Pakistan's Premier Hotel Chain | 24 Locations</title>
+<meta name="description" content="Shelton Hotels: Pakistan's trusted hotel brand across 10 cities — Islamabad, Lahore, Peshawar, Swat, Dir and more. Book direct via WhatsApp or email with no fees.">
+<meta name="keywords" content="Shelton Hotels, hotels in Pakistan, hotels Islamabad, hotels Lahore, hotels Peshawar, hotels Swat, Pakistan accommodation">
+<meta property="og:title" content="Shelton Hotels — Pakistan's Premier Hotel Chain">
+<meta property="og:description" content="24 properties across 10 cities. Book directly with no fees.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/mark-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/hero-carousel.css">
+</head>
+<body class="page-enter">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="top-bar" id="top-bar" role="navigation" aria-label="Site utility navigation">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <a href="index.html"    class="top-bar-link">Shelton Home</a>
+      <a href="branches.html" class="top-bar-link">Our Destinations</a>
+      <a href="about.html"    class="top-bar-link">About</a>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-bar-contact">Bookings: <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Shelton Hotels — Home">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels logo mark">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="branches.html">Hotels</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="branches.html" id="nav-book-btn">Book a Stay</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ ROUTE RIBBON ============ -->
+<div class="route-ribbon" aria-hidden="true">
+  <div class="route-track" data-route-ribbon></div>
+  <div class="route-track" data-route-ribbon></div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero" aria-label="Shelton Hotels — Pakistan's premier hotel brand">
+  <!-- Hero background carousel (managed by hero-carousel.js) -->
+  <div class="hc-stage" id="hc-stage" data-manifest="assets/img/carousel/manifest.json" aria-hidden="true">
+    <!-- slides are injected here by hero-carousel.js -->
+    <div class="hc-overlay"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-copy reveal" id="hero-copy">
+      <div class="hero-badge">
+        <span class="dot" aria-hidden="true"></span>
+        Booking open across all 24 properties
+      </div>
+      <h1>Where <em>Pakistan</em><br>stays.</h1>
+      <p class="hero-lede">From Lahore's urban boulevards to Swat's pine valleys<br>Shelton Hotels offers consistent comfort, direct booking, and a front desk that always picks up.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold btn-lg" href="branches.html" id="hero-find-btn">Find Your Hotel &nbsp;→</a>
+        <a class="btn btn-outline-light btn-lg" href="about.html" id="hero-story-btn">Our Story</a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-l">24 properties · 10 cities · Direct booking · No fees</span>
+      </div>
+    </div>
+    <div class="hero-mark reveal" id="hero-stats-panel">
+      <div class="ring" aria-hidden="true">
+        <img src="assets/img/mark-black.png" alt="Shelton Hotels mark">
+      </div>
+      <div class="hero-stats" role="list">
+        <div role="listitem"><b>10</b><span>Cities</span></div>
+        <div role="listitem"><b>24</b><span>Hotels</span></div>
+        <div role="listitem"><b>4.1★</b><span>Rating</span></div>
+        <div role="listitem"><b>30+</b><span>Years</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+
+  <!-- ====== BOOKING BAR (Serena-inspired) ====== -->
+  <div class="booking-bar" id="booking-bar" role="search" aria-label="Hotel booking search">
+    <div class="booking-bar-inner">
+
+      <!-- Destination -->
+      <div class="booking-bar-field" id="bb-dest-field">
+        <div class="booking-bar-label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.75 4.5 8.5 4.5 8.5s4.5-4.75 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+          Where do you want to go?
+        </div>
+        <div class="booking-bar-value">
+          <select id="bb-destination" aria-label="Select destination city">
+            <option value="">Select a city…</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Peshawar">Peshawar</option>
+            <option value="Rawalpindi">Rawalpindi</option>
+            <option value="Swat">Swat</option>
+            <option value="Lower Dir">Lower Dir</option>
+            <option value="Upper Dir">Upper Dir</option>
+            <option value="Mardan">Mardan</option>
+            <option value="Bannu">Bannu</option>
+            <option value="Dera Ismail Khan">D.I. Khan</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Check-in -->
+      <div class="booking-bar-field" id="bb-checkin-field">
+        <div class="booking-bar-label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="11.5" rx="1"/><path d="M1.5 6.5h13M5 1.5v3M11 1.5v3"/></svg>
+          Check-In
+        </div>
+        <div class="booking-bar-value">
+          <input type="date" id="bb-checkin" aria-label="Check-in date">
+        </div>
+      </div>
+
+      <!-- Check-out -->
+      <div class="booking-bar-field" id="bb-checkout-field">
+        <div class="booking-bar-label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="11.5" rx="1"/><path d="M1.5 6.5h13M5 1.5v3M11 1.5v3"/></svg>
+          Check-Out
+        </div>
+        <div class="booking-bar-value">
+          <input type="date" id="bb-checkout" aria-label="Check-out date">
+        </div>
+      </div>
+
+      <!-- Rooms counter -->
+      <div class="booking-bar-field" id="bb-rooms-field">
+        <div class="booking-bar-label">Rooms</div>
+        <div class="booking-bar-value">
+          <div class="booking-bar-counter">
+            <button class="booking-bar-counter-btn" id="bb-rooms-dec" aria-label="Decrease rooms">−</button>
+            <span class="booking-bar-counter-num" id="bb-rooms-num">1</span>
+            <button class="booking-bar-counter-btn" id="bb-rooms-inc" aria-label="Increase rooms">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guests counter -->
+      <div class="booking-bar-field" id="bb-guests-field">
+        <div class="booking-bar-label">Guests</div>
+        <div class="booking-bar-value">
+          <div class="booking-bar-counter">
+            <button class="booking-bar-counter-btn" id="bb-guests-dec" aria-label="Decrease guests">−</button>
+            <span class="booking-bar-counter-num" id="bb-guests-num">2</span>
+            <button class="booking-bar-counter-btn" id="bb-guests-inc" aria-label="Increase guests">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book CTA -->
+      <div class="booking-bar-cta">
+        <button class="btn btn-gold btn-lg" id="bb-search-btn" style="white-space:nowrap; min-width:130px;">Book Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND INTRODUCTION (Luxury Editorial) ============ -->
+<section class="brand-intro reveal" id="brand-intro" aria-label="Welcome to Shelton Hotels">
+  <div class="brand-intro-glow" aria-hidden="true"></div>
+  <div class="container container--narrow">
+    <div class="brand-intro-content">
+      
+      <div class="brand-intro-header">
+        <div class="brand-intro-emblem" aria-hidden="true">
+          <img src="assets/img/mark-black.png" alt="Shelton Hotels logo mark" class="brand-intro-logo">
+        </div>
+        <div class="brand-intro-eyebrow">EST. 1990 &middot; PAKISTAN</div>
+      </div>
+
+      <h2 class="brand-intro-title">
+        A quiet sanctuary of <em>authentic</em> hospitality across Pakistan.
+      </h2>
+
+      <div class="brand-intro-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-diamond">&diams;</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <p class="brand-intro-desc">
+        For over three decades, Shelton Hotels has cultivated a timeless standard of Pakistani warmth, personal attention, and architectural elegance. Spanning 24 properties across 10 signature destinations, from the leafy avenues of Islamabad to the serene pine valleys of Swat, our collection delivers dependable comfort grounded in rich local heritage.
+      </p>
+
+      <div class="brand-intro-pillars" role="list" aria-label="Key brand statistics">
+        <div class="pillar-item" role="listitem">
+          <span class="pillar-num">24</span>
+          <span class="pillar-text">Properties</span>
+        </div>
+        <div class="pillar-sep" aria-hidden="true">/</div>
+        <div class="pillar-item" role="listitem">
+          <span class="pillar-num">10</span>
+          <span class="pillar-text">Destinations</span>
+        </div>
+        <div class="pillar-sep" aria-hidden="true">/</div>
+        <div class="pillar-item" role="listitem">
+          <span class="pillar-num">30+</span>
+          <span class="pillar-text">Years Heritage</span>
+        </div>
+      </div>
+
+      <div class="brand-intro-action">
+        <a class="brand-intro-cta" href="about.html" id="brand-intro-readmore">
+          <span class="cta-label">Explore Our Story</span>
+          <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATION STRIP ============ -->
+<nav class="dest-strip" aria-label="City quick navigation" style="padding-top:8px; padding-bottom:8px;">
+  <div class="dest-strip-inner" id="dest-strip-inner">
+    <a href="branches.html#islamabad"        class="dest-chip active"  id="chip-islamabad">Islamabad</a>
+    <a href="branches.html#rawalpindi"       class="dest-chip"         id="chip-rawalpindi">Rawalpindi</a>
+    <a href="branches.html#peshawar"         class="dest-chip"         id="chip-peshawar">Peshawar</a>
+    <a href="branches.html#lahore"           class="dest-chip"         id="chip-lahore">Lahore</a>
+    <a href="branches.html#swat"             class="dest-chip"         id="chip-swat">Swat</a>
+    <a href="branches.html#lower-dir"        class="dest-chip"         id="chip-dir">Lower Dir</a>
+    <a href="branches.html#mardan"           class="dest-chip"         id="chip-mardan">Mardan</a>
+    <a href="branches.html#bannu"            class="dest-chip"         id="chip-bannu">Bannu</a>
+    <a href="branches.html#dera-ismail-khan" class="dest-chip"         id="chip-dik">D.I. Khan</a>
+  </div>
+</nav>
+
+<!-- ============ FEATURED DESTINATIONS ============ -->
+<section id="destinations" aria-labelledby="dest-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Where we are</div>
+      <h2 id="dest-heading">Our <em>destinations</em></h2>
+      <p>From mountain escapes in Swat and Dir to Islamabad's business district and Lahore's cultural heart, find a Shelton hotel wherever Pakistan takes you.</p>
+    </div>
+
+    <div class="destinations-grid reveal">
+      <div class="dest-card stagger-1" role="link" tabindex="0" onclick="location.href='branches.html#islamabad'" aria-label="Explore Islamabad hotels">
+        <img class="dest-card-img" src="assets/img/dest-islamabad.jpg" alt="Islamabad" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <div class="dest-card-eyebrow">Federal Capital</div>
+          <div class="dest-card-name">Islamabad</div>
+          <div class="dest-card-count">5 hotels &amp; apartments</div>
+        </div>
+        <div class="dest-card-arrow" aria-hidden="true">→</div>
+      </div>
+      <div class="dest-card stagger-2" role="link" tabindex="0" onclick="location.href='branches.html#rawalpindi'" aria-label="Explore Rawalpindi hotels">
+        <img class="dest-card-img" src="assets/img/dest-rawalpindi.jpg" alt="Rawalpindi" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <div class="dest-card-eyebrow">Punjab · Pakistan</div>
+          <div class="dest-card-name">Rawalpindi</div>
+          <div class="dest-card-count">1 property</div>
+        </div>
+        <div class="dest-card-arrow" aria-hidden="true">→</div>
+      </div>
+      <div class="dest-card stagger-3" role="link" tabindex="0" onclick="location.href='branches.html#peshawar'" aria-label="Explore Peshawar hotels">
+        <img class="dest-card-img" src="assets/img/dest-peshawar.jpg" alt="Peshawar" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <div class="dest-card-eyebrow">KPK · Pakistan</div>
+          <div class="dest-card-name">Peshawar</div>
+          <div class="dest-card-count">6 hotels &amp; properties</div>
+        </div>
+        <div class="dest-card-arrow" aria-hidden="true">→</div>
+      </div>
+      <div class="dest-card stagger-4" role="link" tabindex="0" onclick="location.href='branches.html#lahore'" aria-label="Explore Lahore hotels">
+        <img class="dest-card-img" src="assets/img/dest-lahore.jpg" alt="Lahore" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <div class="dest-card-eyebrow">Punjab · Pakistan</div>
+          <div class="dest-card-name">Lahore</div>
+          <div class="dest-card-count">3 hotels</div>
+        </div>
+        <div class="dest-card-arrow" aria-hidden="true">→</div>
+      </div>
+      <div class="dest-card stagger-5" role="link" tabindex="0" onclick="location.href='branches.html#swat'" aria-label="Explore Swat &amp; Dir hotels">
+        <img class="dest-card-img" src="assets/img/dest-swat.jpg" alt="Swat &amp; Dir" loading="lazy">
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-body">
+          <div class="dest-card-eyebrow">KPK · Pakistan</div>
+          <div class="dest-card-name">Swat &amp; Dir</div>
+          <div class="dest-card-count">3 mountain properties</div>
+        </div>
+        <div class="dest-card-arrow" aria-hidden="true">→</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a class="btn btn-ghost" href="branches.html" id="all-dest-btn">View All Destinations &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND STATEMENT ============ -->
+<div class="brand-statement" aria-label="Shelton Hotels brand statement">
+  <div class="container">
+    <div class="reveal">
+      <p class="brand-statement-quote">Every branch answers its own phone. That's not an accident — it's the whole model.</p>
+      <span class="brand-statement-attr">— The Shelton Promise</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CITIES GRID ============ -->
+<section id="cities" aria-labelledby="cities-heading">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center">10 Cities across Pakistan</div>
+      <h2 id="cities-heading">One key, <em>every city</em></h2>
+      <p>Pick a city to see all Shelton properties, room details, and book directly with the branch — no middleman, no fees.</p>
+    </div>
+    <div class="grid grid-3" data-city-cards></div>
+  </div>
+</section>
+
+<!-- ============ WHY SHELTON ============ -->
+<section class="section-alt" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center">The Shelton difference</div>
+      <h2 id="why-heading">Hospitality, <em>done differently</em></h2>
+      <p>Each branch is run locally — its own front desk, its own WhatsApp line, its own character — under one shared standard of comfort.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal stagger-1">
+        <div class="flow-num">01</div>
+
+        <h3>Direct Booking</h3>
+        <p>No booking platform commission in your rate. Message any branch directly and confirm over WhatsApp or email — real people, real answers.</p>
+      </div>
+      <div class="flow-step reveal stagger-2">
+        <div class="flow-num">02</div>
+
+        <h3>Local Knowledge</h3>
+        <p>From Kumrat's mountain-road logistics to Lahore traffic patterns — each team knows their city inside out and shares that with every guest.</p>
+      </div>
+      <div class="flow-step reveal stagger-3">
+        <div class="flow-num">03</div>
+
+        <h3>Consistent Comfort</h3>
+        <p>Warm rooms, real breakfast, a front desk that picks up. The same Shelton standard from Bannu to Blue Area, every single time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEYOND THE ROOM ============ -->
+<section aria-labelledby="beyond-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Beyond the room</div>
+      <h2 id="beyond-heading">Dining &amp; extended <em>stays</em></h2>
+      <p>Shelton Restaurant locations and Penthouse by Shelton offer dining and extended-stay experiences under the same trusted brand.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod reveal">
+        <div class="prod-tag">Restaurant · Mardan &amp; Buner</div>
+        <h3>Shelton Restaurant</h3>
+        <p class="pd">All-you-can-eat spreads, private dining halls, and rooftop seating. A Shelton experience that goes beyond the room.</p>
+        <ul class="prod-feats">
+          <li>All-you-can-eat dining</li>
+          <li>Rooftop seating</li>
+          <li>Private dining room</li>
+          <li>Family-friendly atmosphere</li>
+        </ul>
+        <a class="prod-link" href="branches.html#mardan" id="restaurant-link">See Mardan &amp; Buner <span class="arw">→</span></a>
+      </div>
+      <div class="prod reveal" style="background:radial-gradient(120% 100% at 100% 0,#2a2140 0,#120E22 55%)">
+        <div class="prod-tag" style="color:#B79CF0;">Apartment · Islamabad Expressway</div>
+        <h3>Penthouse by Shelton</h3>
+        <p class="pd">4.6★ rated holiday apartment on the Islamabad Expressway — ideal for longer stays, families, and corporate guests.</p>
+        <ul class="prod-feats">
+          <li>4.6★ guest rating</li>
+          <li>Islamabad Expressway location</li>
+          <li>Ideal for extended stays</li>
+          <li>Family-friendly</li>
+        </ul>
+        <a class="prod-link" href="branches.html#islamabad" style="color:#B79CF0;" id="penthouse-link">Book the Penthouse <span class="arw">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section style="padding-top:0;" aria-label="Shelton Hotels by the numbers">
+  <div class="container">
+    <div class="stats-band reveal">
+      <div class="eyebrow">Shelton by the numbers</div>
+      <h3>Trusted by guests across Pakistan<br>for over three decades</h3>
+      <p>From the TM Group's first guest houses in Peshawar to a network spanning 10 cities — one identity, every city.</p>
+      <div class="stats-row" role="list">
+        <div role="listitem"><div class="stat-v">10</div><div class="stat-l">Cities covered</div></div>
+        <div role="listitem"><div class="stat-v">24</div><div class="stat-l">Properties in operation</div></div>
+        <div role="listitem"><div class="stat-v">4.1★</div><div class="stat-l">Average Google rating</div></div>
+        <div role="listitem"><div class="stat-v">30+</div><div class="stat-l">Years of hospitality</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUEST TESTIMONIALS ============ -->
+<section class="section-alt" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center">Guest reviews</div>
+      <h2 id="reviews-heading">What our <em>guests say</em></h2>
+      <p>Real experiences from guests across our 24 properties in Pakistan.</p>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card reveal stagger-1">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true">★</span>
+        </div>
+        <p class="testimonial-text">"Booked directly via WhatsApp and got a response within minutes. The room was exactly as described — clean, warm, and well-appointed. Will definitely stay with Shelton again on my next Peshawar visit."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">AK</div>
+          <div>
+            <span class="testimonial-name">Ahmed K.</span>
+            <span class="testimonial-meta">VIP House Peshawar · Google Review</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-2">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true">★</span>
+        </div>
+        <p class="testimonial-text">"Excellent stay at Shelton's Ambassador in Islamabad. Right in Blue Area, staff was incredibly helpful with local recommendations. The breakfast was a proper start to the day."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">SR</div>
+          <div>
+            <span class="testimonial-name">Sana R.</span>
+            <span class="testimonial-meta">Shelton's Ambassador · Google Review</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal stagger-3">
+        <div class="testimonial-stars" aria-label="4 out of 5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+          <span class="testimonial-star" aria-hidden="true" style="opacity:0.3">★</span>
+        </div>
+        <p class="testimonial-text">"Stayed at Shelton Rezidor Lahore for a business trip. Great Gulberg location, comfortable rooms, and the team arranged transport without any fuss. Competitive rates for what you get."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">MF</div>
+          <div>
+            <span class="testimonial-name">M. Farooq</span>
+            <span class="testimonial-meta">Shelton's Rezidor Lahore · Google Review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec-final" aria-label="Book a stay at Shelton Hotels">
+  <div class="final reveal">
+    <div class="fmesh" aria-hidden="true"></div>
+    <div class="glow"  aria-hidden="true"></div>
+    <div class="final-in">
+      <div class="book-direct-badge" aria-hidden="true">
+        <span class="book-direct-badge-dot"></span>
+        Best rate guaranteed direct
+      </div>
+      <div class="eyebrow center eyebrow--light">Direct booking</div>
+      <h2>No fees.<br><em>No middleman.</em></h2>
+      <p>Message any branch directly on WhatsApp, or send your dates by email — a real front desk replies, not a call centre. 24 properties, one booking process.</p>
+      <div class="final-ctas">
+        <a class="btn btn-light btn-lg" href="branches.html" id="final-cta-btn">Find Your Branch &nbsp;→</a>
+        <a class="btn btn-outline-light btn-lg" href="contact.html" id="final-contact-btn">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" role="contentinfo">
+  <!-- Award strip -->
+  <div class="footer-award-strip container">
+    <div class="footer-award"><span class="footer-award-icon" aria-hidden="true">🏆</span>Trusted hospitality since 1990s</div>
+    <div class="footer-award"><span class="footer-award-icon" aria-hidden="true">⭐</span>4.1 average Google rating</div>
+    <div class="footer-award"><span class="footer-award-icon" aria-hidden="true">🇵🇰</span>Pakistan's own hotel brand</div>
+    <div class="footer-award"><span class="footer-award-icon" aria-hidden="true">💬</span>Direct WhatsApp booking</div>
+  </div>
+
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+      <p class="foot-txt">Locally rooted hospitality across Pakistan. 24 properties spanning Khyber Pakhtunkhwa, Punjab, and the Federal Capital.</p>
+      <div class="foot-contact">
+        <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Follow Shelton Hotels on Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Follow Shelton Hotels on TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="branches.html">All hotels</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="branches.html#peshawar">Peshawar</a></li>
+        <li><a href="branches.html#islamabad">Islamabad</a></li>
+        <li><a href="branches.html#lahore">Lahore</a></li>
+        <li><a href="branches.html#swat">Swat &amp; Dir</a></li>
+        <li><a href="branches.html#mardan">Mardan</a></li>
+        <li><a href="branches.html#rawalpindi">Rawalpindi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Book Direct</h4>
+      <ul>
+        <li><a href="mailto:Bookings@tmhotels.com">Email booking</a></li>
+        <li><a href="branches.html">Browse hotels</a></li>
+        <li><a href="contact.html">Corporate enquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Shelton Hotels. All rights reserved.</span>
+    <span>sheltonhotels.com</span>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal-backdrop" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-branch-name">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close booking form">✕</button>
+    <h3 id="modal-branch-name">Book Your Stay</h3>
+    <p class="modal-sub" id="modal-branch-sub">Tell us your dates and preferred room — we'll confirm availability directly.</p>
+    <form id="booking-form" novalidate>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input id="f-name" type="text" placeholder="Your full name" autocomplete="name">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-checkin">Check-in</label>
+          <input id="f-checkin" type="date">
+        </div>
+        <div class="field">
+          <label for="f-checkout">Check-out</label>
+          <input id="f-checkout" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-guests">Number of Guests</label>
+        <input id="f-guests" type="number" min="1" placeholder="2" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="f-notes">Notes &amp; Room Preference</label>
+        <textarea id="f-notes" rows="2" placeholder="Twin room, late check-in, etc."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-gold btn-block" id="send-whatsapp">Send via WhatsApp</button>
+        <button type="button" class="btn btn-ghost btn-block" id="send-email">Send via Email</button>
+        <button type="button" class="btn btn-block" disabled>Pay Online — coming soon</button>
+        <p class="pay-note">Card payment will be available once our payment gateway goes live.</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ SCROLL TO TOP ============ -->
+<button class="scroll-to-top" id="scroll-top-btn" aria-label="Scroll to top of page">↑</button>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/hero-carousel.js"></script>
+<script>
+  /* ---- Year ---- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+  /* ---- Scroll-aware nav ---- */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  /* ---- Mobile nav toggle ---- */
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav   = document.getElementById('main-nav');
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mainNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---- Hero image load → handled by hero-carousel.js ---- */
+
+  /* ---- Scroll reveal ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---- Booking Bar: counters ---- */
+  function makeCounter(decId, numId, incId, min = 1, max = 10) {
+    let val = parseInt(document.getElementById(numId).textContent);
+    document.getElementById(decId).addEventListener('click', () => {
+      if (val > min) { val--; document.getElementById(numId).textContent = val; }
+    });
+    document.getElementById(incId).addEventListener('click', () => {
+      if (val < max) { val++; document.getElementById(numId).textContent = val; }
+    });
+    return () => val;
+  }
+  const getRooms  = makeCounter('bb-rooms-dec',  'bb-rooms-num',  'bb-rooms-inc',  1, 10);
+  const getGuests = makeCounter('bb-guests-dec', 'bb-guests-num', 'bb-guests-inc', 1, 20);
+
+  /* ---- Booking Bar: set today + tomorrow as defaults ---- */
+  const today    = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const fmt = d => d.toISOString().slice(0,10);
+  document.getElementById('bb-checkin').value  = fmt(today);
+  document.getElementById('bb-checkout').value = fmt(tomorrow);
+
+  /* ---- Booking Bar: Book Now → opens modal ---- */
+  document.getElementById('bb-search-btn').addEventListener('click', () => {
+    const dest     = document.getElementById('bb-destination').value;
+    const checkin  = document.getElementById('bb-checkin').value;
+    const checkout = document.getElementById('bb-checkout').value;
+    const rooms    = getRooms();
+    const guests   = getGuests();
+
+    /* Pre-fill modal fields */
+    document.getElementById('f-checkin').value  = checkin;
+    document.getElementById('f-checkout').value = checkout;
+    document.getElementById('f-guests').value   = guests;
+
+    /* Update modal sub text */
+    const sub = dest
+      ? `${dest} · ${rooms} room${rooms>1?'s':''} · ${guests} guest${guests>1?'s':''}`
+      : `${rooms} room${rooms>1?'s':''} · ${guests} guest${guests>1?'s':''}`;
+    document.getElementById('modal-branch-sub').textContent = sub + ' — tell us your preference and we\'ll confirm directly.';
+    document.getElementById('modal-branch-name').textContent = dest ? `Book in ${dest}` : 'Book Your Stay';
+
+    /* Open modal (no specific branch, general booking) */
+    openBookingModal(null);
+  });
+
+  /* ---- Scroll to top ---- */
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---- Destination card keyboard nav ---- */
+  document.querySelectorAll('.dest-card[tabindex]').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" class="has-top-bar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Shelton Hotels Pakistan</title>
+<meta name="description" content="Contact Shelton Hotels — booking email, WhatsApp booking direct with any branch, corporate enquiries, and social channels.">
+<link rel="icon" href="assets/img/mark-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/hero-carousel.css">
+<style>
+  /* Contact page enhancements */
+  .contact-method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 72px;
+  }
+
+  .contact-method-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: all 0.45s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .contact-method-card:hover {
+    box-shadow: 0 24px 64px -20px rgba(12,10,20,0.12);
+    transform: translateY(-4px);
+    border-color: var(--gold-soft);
+  }
+
+  .contact-method-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .contact-method-icon {
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+    line-height: 1;
+    display: block;
+  }
+
+  .contact-method-card h3 {
+    font-family: var(--sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .contact-method-card p {
+    font-size: 0.88rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .contact-method-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: var(--sans);
+    color: var(--gold-deep);
+    letter-spacing: 0.04em;
+    transition: gap 0.3s var(--ease), color 0.25s;
+    margin-top: auto;
+  }
+
+  .contact-method-link:hover {
+    color: var(--gold);
+    gap: 14px;
+  }
+
+  /* Corporate section */
+  .corporate-section {
+    background: var(--navy-2);
+    border-radius: var(--radius-xl);
+    padding: 72px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .corporate-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(184,149,106,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .corporate-copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .corporate-copy h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .corporate-copy h2 em {
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+
+  .corporate-copy p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .corporate-perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .corporate-perks li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .corporate-perks li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex: none;
+  }
+
+  /* Contact form */
+  .contact-form-card {
+    background: var(--paper);
+    border-radius: var(--radius-lg);
+    padding: 44px 40px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+  }
+
+  .contact-form-card h3 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .contact-form-card .sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .contact-method-grid { grid-template-columns: 1fr; }
+    .corporate-section { grid-template-columns: 1fr; padding: 44px 28px; gap: 36px; }
+  }
+
+  @media (max-width: 640px) {
+    .contact-form-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body class="page-enter">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="top-bar" id="top-bar" role="navigation" aria-label="Site utility navigation">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <a href="index.html"    class="top-bar-link">Shelton Home</a>
+      <a href="branches.html" class="top-bar-link">Our Destinations</a>
+      <a href="about.html"    class="top-bar-link">About</a>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-bar-contact">Bookings: <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Shelton Hotels — Home">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels logo mark">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav class="main-nav" id="main-nav" role="navigation">
+      <a href="index.html">Home</a>
+      <a href="branches.html">Hotels</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a class="nav-cta" href="branches.html" id="nav-book-btn">Book a Stay</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ ROUTE RIBBON ============ -->
+<div class="route-ribbon" aria-hidden="true">
+  <div class="route-track" data-route-ribbon></div>
+  <div class="route-track" data-route-ribbon></div>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="hero hero--sub" style="min-height:44vh; background: linear-gradient(135deg, var(--navy) 0%, #101830 100%);" aria-labelledby="contact-h1">
+  <!-- Hero background carousel (managed by hero-carousel.js) -->
+  <div class="hc-stage" id="hc-stage" data-manifest="assets/img/carousel4/manifest.json" aria-hidden="true" style="opacity: 0.20;">
+    <!-- slides are injected here by hero-carousel.js -->
+    <div class="hc-overlay"></div>
+  </div>
+  <div class="hero-inner" style="padding-top:80px; grid-template-columns: 1fr;">
+    <div class="hero-copy reveal">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        We're here
+      </div>
+      <h1 id="contact-h1">Get in <em>touch.</em></h1>
+      <p class="hero-lede" style="max-width:52ch;">For the fastest reply, book directly with your branch on the <a href="branches.html" style="color:var(--gold-bright); font-weight:600;">Hotels page</a>. For general enquiries, partnerships, and corporate bookings — reach us below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT METHODS ============ -->
+<section aria-labelledby="contact-methods-heading">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center">Ways to reach us</div>
+      <h2 id="contact-methods-heading">Here at the branch,<br><em>and online</em></h2>
+    </div>
+
+    <div class="contact-method-grid">
+      <!-- Email -->
+      <div class="contact-method-card reveal">
+
+        <div class="eyebrow" style="margin-bottom:12px;">Email</div>
+        <h3>Booking &amp; Enquiries</h3>
+        <p>For reservations, corporate bookings, group stays, and general enquiries. We typically respond within a few hours.</p>
+        <a href="mailto:Bookings@tmhotels.com" class="contact-method-link" id="email-contact-link">
+          Bookings@tmhotels.com →
+        </a>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="contact-method-card reveal">
+
+        <div class="eyebrow" style="margin-bottom:12px;">WhatsApp</div>
+        <h3>Direct to Your Branch</h3>
+        <p>Every Shelton branch has its own WhatsApp line — the fastest way to confirm availability, check rates, and arrange your stay.</p>
+        <a href="branches.html" class="contact-method-link" id="whatsapp-contact-link">
+          Find branch number →
+        </a>
+      </div>
+
+      <!-- Social -->
+      <div class="contact-method-card reveal">
+
+        <div class="eyebrow" style="margin-bottom:12px;">Social</div>
+        <h3>Follow Along</h3>
+        <p>See our properties, travel inspiration, special offers, and guest moments from across Pakistan on Instagram and TikTok.</p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:auto;">
+          <a href="https://instagram.com/shelton.hotels" target="_blank" rel="noopener noreferrer" class="contact-method-link" id="instagram-link" style="display:flex; align-items:center; gap:10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @shelton.hotels on Instagram →
+          </a>
+          <a href="https://tiktok.com/@shelton.hotels" target="_blank" rel="noopener noreferrer" class="contact-method-link" id="tiktok-link" style="display:flex; align-items:center; gap:10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            @shelton.hotels on TikTok →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corporate section -->
+    <div class="corporate-section reveal">
+      <div class="corporate-copy">
+        <div class="eyebrow eyebrow--light" style="margin-bottom:16px;">Corporate Travel</div>
+        <h2>Travelling for <em>business?</em></h2>
+        <p>Shelton Hotels serves corporate clients across Pakistan with consistent, professional accommodation, direct billing arrangements, and properties in every major commercial hub.</p>
+        <ul class="corporate-perks">
+          <li>Properties in Islamabad, Lahore, Peshawar &amp; more</li>
+          <li>Direct billing and corporate rate discussions</li>
+          <li>Group bookings across multiple cities</li>
+          <li>Conference &amp; meeting facilities available</li>
+          <li>Flexible check-in/check-out for travel schedules</li>
+        </ul>
+        <a href="mailto:Bookings@tmhotels.com?subject=Corporate%20Enquiry%20-%20Shelton%20Hotels" class="btn btn-gold btn-lg" id="corporate-email-btn">
+          Send Corporate Enquiry →
+        </a>
+      </div>
+
+      <!-- Quick contact form -->
+      <div class="contact-form-card">
+        <h3>Quick Enquiry</h3>
+        <p class="sub">Fill in the form and we'll get back to you with availability and rates.</p>
+        <form id="contact-enquiry-form" novalidate>
+          <div class="field">
+            <label for="cq-name">Full Name</label>
+            <input id="cq-name" type="text" placeholder="Your full name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="cq-email">Email Address</label>
+            <input id="cq-email" type="email" placeholder="your@email.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="cq-city">Preferred City</label>
+            <select id="cq-city">
+              <option value="">Select a city…</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Peshawar">Peshawar</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Swat">Swat</option>
+              <option value="Lower Dir">Lower Dir</option>
+              <option value="Mardan">Mardan</option>
+              <option value="Bannu">Bannu</option>
+              <option value="Dera Ismail Khan">Dera Ismail Khan</option>
+              <option value="Other">Other / Multiple</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cq-message">Message</label>
+            <textarea id="cq-message" rows="3" placeholder="Tell us about your booking needs, dates, group size…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="enquiry-submit-btn">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION & MAP SECTION (Serena-inspired) ============ -->
+<section class="location-section" aria-labelledby="location-heading">
+  <div class="location-grid">
+    <div class="location-info reveal">
+      <div class="eyebrow">Find Us</div>
+      <h3 id="location-heading">Central Locations Across Pakistan</h3>
+      <div class="sub">24 PROPERTIES · 10 CITIES</div>
+      <p>From Blue Area in Islamabad to University Town in Peshawar and Gulberg in Lahore — Shelton Hotels properties are located at key commercial and leisure crossroads.</p>
+      
+      <span class="location-contact-heading">Central Office &amp; Booking Enquiries</span>
+      <div class="location-contact-lines">
+        <div class="location-contact-line"><span>EMAIL</span> <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a></div>
+        <div class="location-contact-line"><span>HQ</span> Shelton Ambassador, Sector G-6/1, Blue Area, Islamabad</div>
+        <div class="location-contact-line"><span>TEL</span> <a href="tel:+9251111133133">+92 51 111 133 133</a></div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <a class="btn btn-outline-dark btn-sm" href="branches.html" id="contact-explore-map-btn">Browse All Locations &nbsp;→</a>
+      </div>
+    </div>
+    <div class="location-map">
+      <iframe title="Shelton Hotels Pakistan Locations Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.825633842186!2d73.0841!3d33.7144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd111111111%3A0x1111111111111111!2sIslamabad%2C%20Pakistan!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec-final" aria-label="Book a Shelton Hotels stay">
+  <div class="final reveal">
+    <div class="fmesh" aria-hidden="true"></div>
+    <div class="glow"  aria-hidden="true"></div>
+    <div class="final-in">
+      <div class="eyebrow center eyebrow--light">Ready to book?</div>
+      <h2>24 properties.<br><em>One message away.</em></h2>
+      <p>Browse our full hotel directory and book directly with your chosen branch over WhatsApp or email — no fees, no middleman.</p>
+      <div class="final-ctas">
+        <a class="btn btn-light btn-lg" href="branches.html" id="contact-cta-btn">See All Hotels &nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/mark-black.png" alt="Shelton Hotels">
+      <span class="brand-word">Shelton <span class="gold">Hotels</span></span>
+      <p class="foot-txt">Locally rooted hospitality across Khyber Pakhtunkhwa and Punjab. 24 properties, 10 cities.</p>
+      <div class="foot-contact">
+        <a href="mailto:Bookings@tmhotels.com">Bookings@tmhotels.com</a>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Shelton Hotels on Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@shelton.hotels" target="_blank" rel="noopener noreferrer" aria-label="Shelton Hotels on TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="branches.html">All hotels</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="branches.html#peshawar">Peshawar</a></li>
+        <li><a href="branches.html#islamabad">Islamabad</a></li>
+        <li><a href="branches.html#lahore">Lahore</a></li>
+        <li><a href="branches.html#swat">Swat &amp; Dir</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Book Direct</h4>
+      <ul>
+        <li><a href="mailto:Bookings@tmhotels.com">Email booking</a></li>
+        <li><a href="branches.html">Browse hotels</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Shelton Hotels. All rights reserved.</span>
+    <span>sheltonhotels.com</span>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/hero-carousel.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav   = document.getElementById('main-nav');
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mainNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* Contact enquiry form → email */
+  const contactForm = document.getElementById('contact-enquiry-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name    = document.getElementById('cq-name').value    || '(not provided)';
+      const email   = document.getElementById('cq-email').value   || '(not provided)';
+      const city    = document.getElementById('cq-city').value    || '(not specified)';
+      const message = document.getElementById('cq-message').value || '—';
+
+      const subject = encodeURIComponent('Corporate / General Enquiry — Shelton Hotels');
+      const body = encodeURIComponent(
+`General Enquiry — Shelton Hotels
+
+Name:    ${name}
+Email:   ${email}
+City:    ${city}
+Message: ${message}`
+      );
+
+      window.location.href = `mailto:Bookings@tmhotels.com?subject=${subject}&body=${body}`;
+    });
+  }
+
+
+
+  /* Scroll to top */
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+
+<!-- ============ SCROLL TO TOP ============ -->
+<button class="scroll-to-top" id="scroll-top-btn" aria-label="Scroll to top of page">↑</button>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "_readme": "Hero carousel configuration. Edit this file to manage slides — no code changes required.\n\n  SIMPLE entry  →  just a filename string (uses all defaults below)\n  RICH entry    →  an object with optional overrides\n\n  Supported image formats: .jpg, .jpeg, .png, .webp\n  Images are shown in the order listed here.\n\n  Per-image properties (all optional):\n    file                — filename inside assets/img/carousel/   (required)\n    objectPosition      — CSS object-position for desktop         default: center 70%\n    objectPositionTablet — override for tablets (≤ 900 px)       default: inherits objectPosition\n    objectPositionMobile — override for phones (≤ 600 px)        default: inherits objectPosition\n    duration            — hold time in milliseconds               default: 7000\n\n  TIP: For exterior shots showing a building, center 70–75% keeps the\n  facade visible and reduces empty sky. Use center 50% for interiors.",
+
+  "defaults": {
+    "objectPosition":       "center 70%",
+    "objectPositionTablet": "center 68%",
+    "objectPositionMobile": "center 65%",
+    "duration": 7000
+  },
+
+  "images": [
+    {
+      "file": "01-hero.png",
+      "objectPosition":       "center 72%",
+      "objectPositionTablet": "center 70%",
+      "objectPositionMobile": "center 65%"
+    },
+    {
+      "file": "20170421-_MG_9133.JPG",
+      "objectPosition":       "center 65%",
+      "objectPositionTablet": "center 63%",
+      "objectPositionMobile": "center 60%"
+    },
+    {
+      "file": "3114a8ae73e886008daa95f5dd67ef60.jpeg",
+      "objectPosition":       "center 70%",
+      "objectPositionTablet": "center 68%",
+      "objectPositionMobile": "center 65%"
+    },
+    {
+      "file": "385009530.webp",
+      "objectPosition":       "center 70%",
+      "objectPositionTablet": "center 68%",
+      "objectPositionMobile": "center 65%"
+    },
+    {
+      "file": "385009643.webp",
+      "objectPosition":       "center 70%",
+      "objectPositionTablet": "center 68%",
+      "objectPositionMobile": "center 65%"
+    },
+    {
+      "file": "FWD05676.jpg",
+      "objectPosition":       "center 70%",
+      "objectPositionTablet": "center 68%",
+      "objectPositionMobile": "center 65%"
+    },
+    {
+      "file": "jimg (2).jpg",
+      "objectPosition":       "center 70%",
+      "objectPositionTablet": "center 68%",
+      "objectPositionMobile": "center 65%"
+    }
+  ]
+}
