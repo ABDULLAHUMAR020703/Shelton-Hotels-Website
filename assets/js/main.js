@@ -61,8 +61,43 @@ function initNav(){
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".main-nav");
   if(!toggle || !nav) return;
-  toggle.addEventListener("click", () => nav.classList.toggle("open"));
-  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+
+  const closeMenu = () => {
+    nav.classList.remove("open");
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-open");
+    document.body.style.overflow = "";
+  };
+
+  const openMenu = () => {
+    nav.classList.add("open");
+    toggle.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("nav-open");
+    document.body.style.overflow = "hidden";
+  };
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.contains("open");
+    if (isOpen) closeMenu(); else openMenu();
+  });
+
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!nav.classList.contains("open")) return;
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) closeMenu();
+  });
 }
 
 /* ---------- route ribbon (seamless marquee) ---------- */
@@ -143,7 +178,7 @@ function branchCard(b){
   const pendingNote = b.pending ? `<p class="branch-addr" style="color:var(--gold-hover)">Full details coming soon.</p>` : "";
 
   const photoEl = b.photos
-    ? `<a class="branch-photo has-img" href="branch.html?id=${b.id}#gallery" style="background-image:url('${b.photos.dir}/${b.photos.card}')" aria-label="View photos of ${b.name}">
+    ? `<a class="branch-photo has-img" href="branch.html?id=${b.id}#gallery" style="background-image:url('${assetPath(b.photos.dir, b.photos.card)}')" aria-label="View photos of ${b.name}">
          <span>${countPhotos(b)} photos</span>
        </a>`
     : `<div class="branch-photo"><span>${b.area || b.city}</span></div>`;
@@ -263,22 +298,32 @@ function sendViaEmail(){
 
 /* ---------- photo helpers ---------- */
 
+function assetPath(...segments) {
+  return segments
+    .filter(Boolean)
+    .map(segment => String(segment)
+      .split('/')
+      .map(part => encodeURIComponent(part))
+      .join('/'))
+    .join('/');
+}
+
 /** Returns the thumbnail URL for a gallery image.
  *  Hotels without _t.jpg variants (hasThumb === false) reuse the full image.
  *  Hotels with rawNames === true store full filenames in groups (no extension appended). */
 function thumbPath(photos, name) {
-  if (photos.rawNames) return `${photos.dir}/${name}`;
+  if (photos.rawNames) return assetPath(photos.dir, name);
   const ext = photos.ext || 'jpg';
   return photos.hasThumb === false
-    ? `${photos.dir}/${name}.${ext}`
-    : `${photos.dir}/${name}_t.${ext}`;
+    ? assetPath(photos.dir, `${name}.${ext}`)
+    : assetPath(photos.dir, `${name}_t.${ext}`);
 }
 
 /** Returns the full-size URL for a gallery image. */
 function fullPath(photos, name) {
-  if (photos.rawNames) return `${photos.dir}/${name}`;
+  if (photos.rawNames) return assetPath(photos.dir, name);
   const ext = photos.ext || 'jpg';
-  return `${photos.dir}/${name}.${ext}`;
+  return assetPath(photos.dir, `${name}.${ext}`);
 }
 
 function countPhotos(b){
@@ -305,7 +350,7 @@ function initBranchPage(){
   document.title = `${b.name} — Shelton Hotels`;
 
   const ratingHtml = b.rating ? `<span class="rating">★ ${b.rating}</span> <span class="ink-soft">(${b.reviews.toLocaleString()} reviews)</span>` : "";
-  const heroStyle = b.photos ? `style="background-image:linear-gradient(to top, rgba(12,10,20,.72), rgba(12,10,20,.12)), url('${b.photos.dir}/${b.photos.hero}')"` : "";
+  const heroStyle = b.photos ? `style="background-image:linear-gradient(to top, rgba(12,10,20,.72), rgba(12,10,20,.12)), url('${assetPath(b.photos.dir, b.photos.hero)}')"` : "";
 
   /* Feature chips */
   const feats = (b.features||[]).map(f=>`<span class="feat">${f}</span>`).join("");
@@ -367,7 +412,7 @@ function initBranchPage(){
     const tabsHtml   = roomsList.map((r,i) => `<button class="room-selector-tab${i===0?' active':''}" data-room="${i}">${r.name}</button>`).join("");
     const cardsHtml  = roomsList.map((r,i) => {
       const icon   = Object.entries(roomIcons).find(([k]) => r.name.toLowerCase().includes(k))?.[1] || '🏨';
-      const imgSrc = b.photos ? `${b.photos.dir}/${b.photos.hero}` : '';
+      const imgSrc = b.photos ? assetPath(b.photos.dir, b.photos.hero) : '';
       return `
       <div class="room-card${i===0?' active':''}" data-room-card="${i}">
         <div class="room-card-left">

@@ -303,22 +303,6 @@
     header.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
 
-  /* Mobile nav */
-  const navToggle = document.getElementById('nav-toggle');
-  const mainNav   = document.getElementById('main-nav');
-  navToggle.addEventListener('click', () => {
-    const open = mainNav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mainNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
-
   /* Sticky book bar — populate after branch page is rendered */
   function initStickyBar() {
     const params = new URLSearchParams(location.search);

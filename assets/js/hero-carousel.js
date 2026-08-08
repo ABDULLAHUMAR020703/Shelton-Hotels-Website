@@ -91,6 +91,16 @@
    * custom properties directly on the element so the stylesheet
    * can consume them without any JS media-query logic.
    */
+  function assetPath(...segments) {
+    return segments
+      .filter(Boolean)
+      .map(segment => String(segment)
+        .split('/')
+        .map(part => encodeURIComponent(part))
+        .join('/'))
+      .join('/');
+  }
+
   function buildSlide(entry, index) {
     const slide = document.createElement('div');
     slide.className = 'hc-slide';
@@ -124,7 +134,7 @@
 
     /* First image eager-loads so the hero never shows a dark flash */
     img.loading = index === 0 ? 'eager' : 'lazy';
-    img.src = `${baseDir}/${entry.file}`;
+    img.src = assetPath(baseDir, entry.file);
 
     slide.appendChild(img);
     return slide;

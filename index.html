@@ -619,22 +619,6 @@
     header.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
 
-  /* ---- Mobile nav toggle ---- */
-  const navToggle = document.getElementById('nav-toggle');
-  const mainNav   = document.getElementById('main-nav');
-  navToggle.addEventListener('click', () => {
-    const open = mainNav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mainNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
-
   /* ---- Hero image load → handled by hero-carousel.js ---- */
 
   /* ---- Scroll reveal ---- */
