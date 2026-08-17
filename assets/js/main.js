@@ -340,7 +340,7 @@ function renderGalleryItem(photos, src, label, group, branchName) {
     const poster = photos.videoPoster ? fullPath(photos, photos.videoPoster) : "";
     return `
       <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
-        <video class="gal-video-preview" autoplay loop muted playsinline preload="auto"${poster ? ` poster="${poster}"` : ""}>
+        <video class="gal-video-preview" autoplay loop muted playsinline preload="metadata"${poster ? ` poster="${poster}"` : ""}>
           <source src="${full}" type="video/webm">
           ${fallback !== full ? `<source src="${fallback}" type="video/mp4">` : ""}
         </video>
@@ -351,6 +351,59 @@ function renderGalleryItem(photos, src, label, group, branchName) {
     <button class="gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Enlarge ${label} photo">
       <img src="${thumbPath(photos, src)}" loading="lazy" alt="${label} at ${branchName}">
     </button>`;
+}
+
+/**
+ * Selects mobile video assets after the gallery has rendered. This is deliberately
+ * independent of the gallery map so video setup can never abort image rendering.
+ */
+function initResponsiveGalleryVideos(root){
+  if (!root || !root.querySelectorAll) return;
+
+  let isMobile = false;
+  try {
+    isMobile = typeof window !== "undefined"
+      && typeof window.matchMedia === "function"
+      && window.matchMedia("(max-width: 767px)").matches === true;
+  } catch (err) {
+    isMobile = false;
+  }
+
+  root.querySelectorAll("video.gal-video-preview").forEach(video => {
+    let webm = null;
+    let mp4 = null;
+    let desktopWebm = "";
+    let desktopMp4 = "";
+    try {
+      webm = video.querySelector('source[type="video/webm"]');
+      mp4 = video.querySelector('source[type="video/mp4"]');
+      if (!webm || !mp4) return;
+
+      desktopWebm = webm.getAttribute("src");
+      desktopMp4 = mp4.getAttribute("src");
+      if (!desktopWebm || !desktopMp4) return;
+
+      video.preload = isMobile ? "metadata" : "auto";
+      if (!isMobile) return;
+
+      const mobileWebm = desktopWebm.replace(/-web\.webm$/i, "-mobile.webm");
+      const mobileMp4 = desktopMp4.replace(/-web\.mp4$/i, "-mobile.mp4");
+      if (mobileWebm === desktopWebm || mobileMp4 === desktopMp4) return;
+
+      webm.setAttribute("src", mobileWebm);
+      mp4.setAttribute("src", mobileMp4);
+      const item = video.closest(".video-gal-item");
+      if (item) item.dataset.full = mobileWebm;
+      video.load();
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") playPromise.catch(() => {});
+    } catch (err) {
+      // Keep the original desktop sources and poster if mobile setup fails.
+      if (webm && desktopWebm) webm.setAttribute("src", desktopWebm);
+      if (mp4 && desktopMp4) mp4.setAttribute("src", desktopMp4);
+      video.preload = "metadata";
+    }
+  });
 }
 
 /* ---------- branch detail page (enhanced) ---------- */
@@ -533,6 +586,9 @@ function initBranchPage(){
         ${galleryHtml}
       </div>
     </section>`;
+
+  // Video setup is post-render and isolated from gallery/image generation.
+  try { initResponsiveGalleryVideos(root); } catch (err) {}
 
   /* --- gallery tab switching --- */
   root.querySelectorAll(".gallery-tab").forEach(tab => {
