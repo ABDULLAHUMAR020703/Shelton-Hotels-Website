@@ -312,7 +312,7 @@ function assetPath(...segments) {
  *  Hotels without _t.jpg variants (hasThumb === false) reuse the full image.
  *  Hotels with rawNames === true store full filenames in groups (no extension appended). */
 function thumbPath(photos, name) {
-  if (photos.rawNames) return assetPath(photos.dir, name);
+  if (photos.rawNames || name.includes('.')) return assetPath(photos.dir, name);
   const ext = photos.ext || 'jpg';
   return photos.hasThumb === false
     ? assetPath(photos.dir, `${name}.${ext}`)
@@ -321,7 +321,7 @@ function thumbPath(photos, name) {
 
 /** Returns the full-size URL for a gallery image. */
 function fullPath(photos, name) {
-  if (photos.rawNames) return assetPath(photos.dir, name);
+  if (photos.rawNames || name.includes('.')) return assetPath(photos.dir, name);
   const ext = photos.ext || 'jpg';
   return assetPath(photos.dir, `${name}.${ext}`);
 }
@@ -329,6 +329,23 @@ function fullPath(photos, name) {
 function countPhotos(b){
   if(!b.photos) return 0;
   return Object.values(b.photos.groups).reduce((a,g)=>a+g.length,0);
+}
+
+/** Renders a gallery item button. Supports both images and autoplaying looping videos. */
+function renderGalleryItem(photos, src, label, group, branchName) {
+  const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".ogg");
+  const full = fullPath(photos, src);
+  if (isVideo) {
+    return `
+      <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
+        <video class="gal-video-preview" src="${full}" autoplay loop muted playsinline></video>
+        <div class="video-badge"><span class="badge-icon">▶</span> Video</div>
+      </button>`;
+  }
+  return `
+    <button class="gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Enlarge ${label} photo">
+      <img src="${thumbPath(photos, src)}" loading="lazy" alt="${label} at ${branchName}">
+    </button>`;
 }
 
 /* ---------- branch detail page (enhanced) ---------- */
@@ -366,18 +383,12 @@ function initBranchPage(){
       ...availGroups.map(k => ({ key: k, label: PHOTO_LABELS[k], count: b.photos.groups[k].length }))
     ].map((t, i) => `<button class="gallery-tab${i===0?' active':''}" data-tab="${t.key}">${t.label} <small>(${t.count})</small></button>`).join("");
 
-    const allGrid = allPhotos.map(p => `
-      <button class="gal-item" data-full="${fullPath(b.photos, p.src)}" data-group="all" aria-label="Enlarge ${p.label} photo">
-        <img src="${thumbPath(b.photos, p.src)}" loading="lazy" alt="${p.label} at ${b.name}">
-      </button>`).join("");
+    const allGrid = allPhotos.map(p => renderGalleryItem(b.photos, p.src, p.label, 'all', b.name)).join("");
 
     const groupGrids = availGroups.map(k => `
       <div class="gal-group" data-group="${k}">
         <div class="gal-grid">
-          ${b.photos.groups[k].map(n=>`
-            <button class="gal-item" data-full="${fullPath(b.photos, n)}" aria-label="Enlarge ${PHOTO_LABELS[k]} photo">
-              <img src="${thumbPath(b.photos, n)}" loading="lazy" alt="${PHOTO_LABELS[k]} at ${b.name}">
-            </button>`).join("")}
+          ${b.photos.groups[k].map(n=> renderGalleryItem(b.photos, n, PHOTO_LABELS[k], null, b.name)).join("")}
         </div>
       </div>`).join("");
 
@@ -570,12 +581,48 @@ function openLightbox(src){
     lb = document.createElement("div");
     lb.id = "lightbox";
     lb.className = "lightbox";
-    lb.innerHTML = `<img alt=""><button class="lb-close" aria-label="Close">✕</button>`;
+    lb.innerHTML = `
+      <img alt="" style="display:none;">
+      <video controls autoplay loop muted playsinline style="display:none; max-width:100%; max-height:100%; outline:none;"></video>
+      <button class="lb-close" aria-label="Close">✕</button>
+    `;
     document.body.appendChild(lb);
-    lb.addEventListener("click", ()=>{ lb.classList.remove("open"); document.body.style.overflow=""; });
-    document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ lb.classList.remove("open"); document.body.style.overflow=""; } });
+    lb.addEventListener("click", (e)=>{
+      if (e.target.tagName !== 'VIDEO') {
+        lb.classList.remove("open");
+        document.body.style.overflow="";
+        const video = lb.querySelector("video");
+        if (video) video.pause();
+      }
+    });
+    document.addEventListener("keydown", e=>{
+      if(e.key==="Escape"){
+        lb.classList.remove("open");
+        document.body.style.overflow="";
+        const video = lb.querySelector("video");
+        if (video) video.pause();
+      }
+    });
   }
-  lb.querySelector("img").src = src;
+
+  const img = lb.querySelector("img");
+  const video = lb.querySelector("video");
+  const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".ogg");
+
+  if (isVideo) {
+    img.style.display = "none";
+    video.src = src;
+    video.style.display = "block";
+    video.play().catch(err => console.log("Video play failed:", err));
+  } else {
+    if (video) {
+      video.style.display = "none";
+      video.pause();
+    }
+    img.src = src;
+    img.style.display = "block";
+  }
+
   lb.classList.add("open");
   document.body.style.overflow = "hidden";
 }

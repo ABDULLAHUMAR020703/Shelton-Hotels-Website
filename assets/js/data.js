@@ -162,13 +162,14 @@ const BRANCHES = [
       card:"IMG_3974.jpg",
       hasThumb:false,
       groups:{
-        "exterior" :["IMG_3974","IMG_3975","IMG_3977","IMG_3979","IMG_3981"],
+        "video"    :["shelton-rawalpindi.mp4"],
+        "exterior" :["IMG_3974","IMG_3975"],
         "lobby"    :["IMG_3983","IMG_3986","IMG_3989","IMG_3992","IMG_3993"],
         "room-standard":["IMG_3995","IMG_3998","IMG_4001","IMG_4006","IMG_4010"],
         "room-deluxe"  :["IMG_4013","IMG_4015","IMG_4017","IMG_4020","IMG_4021","IMG_4028"],
         "bathroom" :["IMG_4031","IMG_4034","IMG_4035","IMG_4036"],
         "dining"   :["IMG_4040","IMG_4046","IMG_4047"],
-        "hall"     :["IMG_4049","IMG_4053","IMG_4054","IMG_4055"],
+        "hall"     :["IMG_4049","IMG_4054","IMG_4055"],
         "other"    :["IMG_4063","IMG_4065"]
       }
     },
@@ -416,6 +417,7 @@ function citySummary(){
 
 
 const PHOTO_LABELS = {
+  "video"       :"Videos",
   "exterior"    :"Exterior",
   "lobby"       :"Lobby & Reception",
   "room-standard":"Standard Rooms",
@@ -426,6 +428,6 @@ const PHOTO_LABELS = {
   "hall"        :"Conference Hall",
   "other"       :"Around the Property"
 };
-const PHOTO_ORDER = ["exterior","lobby","room-standard","room-deluxe","room-suite","bathroom","dining","hall","other"];
+const PHOTO_ORDER = ["video","exterior","lobby","room-standard","room-deluxe","room-suite","bathroom","dining","hall","other"];
 
 function branchById(id){ return BRANCHES.find(b=>b.id===id); }
