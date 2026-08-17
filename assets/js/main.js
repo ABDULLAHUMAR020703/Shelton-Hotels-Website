@@ -331,47 +331,26 @@ function countPhotos(b){
   return Object.values(b.photos.groups).reduce((a,g)=>a+g.length,0);
 }
 
-/** Returns true on narrow viewports without allowing media-query support to break rendering. */
-function isMobileViewport(){
-  try {
-    return typeof window !== "undefined"
-      && typeof window.matchMedia === "function"
-      && window.matchMedia("(max-width: 767px)").matches === true;
-  } catch (err) {
-    return false;
-  }
-}
-
 /** Renders a gallery item button. Supports both images and autoplaying looping videos. */
 function renderGalleryItem(photos, src, label, group, branchName) {
   const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".ogg");
   if (isVideo) {
-    try {
-      const isMobile = isMobileViewport();
-      const mobileVideo = isMobile && photos.videoMobile;
-      const full = mobileVideo ? fullPath(photos, mobileVideo.webm) : fullPath(photos, src);
-      const fallback = mobileVideo
-        ? fullPath(photos, mobileVideo.mp4)
-        : (src.endsWith(".webm") ? full.replace(/\.webm$/i, ".mp4") : full);
-      const poster = photos.videoPoster ? fullPath(photos, photos.videoPoster) : "";
-      const preload = isMobile ? "metadata" : "auto";
-      return `
-        <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
-          <video class="gal-video-preview" autoplay loop muted playsinline preload="${preload}"${poster ? ` poster="${poster}"` : ""}>
-            <source src="${full}" type="video/webm">
-            ${fallback !== full ? `<source src="${fallback}" type="video/mp4">` : ""}
-          </video>
-          <div class="video-badge"><span class="badge-icon">▶</span> Video</div>
-        </button>`;
-    } catch (err) {
-      const fallbackVideo = assetPath(photos.dir, src);
-      const poster = photos.videoPoster ? assetPath(photos.dir, photos.videoPoster) : "";
-      return `
-        <button class="gal-item video-gal-item" data-full="${fallbackVideo}" ${group ? `data-group="${group}"` : ""} aria-label="View video poster for ${branchName}">
-          ${poster ? `<img src="${poster}" alt="Video preview of ${branchName}">` : ""}
-          <div class="video-badge"><span class="badge-icon">▶</span> Video</div>
-        </button>`;
-    }
+    const isMobile = window.matchMedia?.("(max-width: 767px)").matches === true;
+    const mobileVideo = isMobile && photos.videoMobile;
+    const full = mobileVideo ? fullPath(photos, mobileVideo.webm) : fullPath(photos, src);
+    const fallback = mobileVideo
+      ? fullPath(photos, mobileVideo.mp4)
+      : (src.endsWith(".webm") ? full.replace(/\.webm$/i, ".mp4") : full);
+    const poster = photos.videoPoster ? fullPath(photos, photos.videoPoster) : "";
+    const preload = isMobile ? "metadata" : "auto";
+    return `
+      <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
+        <video class="gal-video-preview" autoplay loop muted playsinline preload="${preload}"${poster ? ` poster="${poster}"` : ""}>
+          <source src="${full}" type="video/webm">
+          ${fallback !== full ? `<source src="${fallback}" type="video/mp4">` : ""}
+        </video>
+        <div class="video-badge"><span class="badge-icon">▶</span> Video</div>
+      </button>`;
   }
   return `
     <button class="gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Enlarge ${label} photo">
