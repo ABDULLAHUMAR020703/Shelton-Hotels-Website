@@ -161,8 +161,9 @@ const BRANCHES = [
       hero:"IMG_3974.jpg",
       card:"IMG_3974.jpg",
       hasThumb:false,
+      videoPoster:"shelton-rawalpindi-poster.webp",
       groups:{
-        "video"    :["shelton-rawalpindi.mp4"],
+        "video"    :["shelton-rawalpindi-web.webm"],
         "exterior" :["IMG_3974","IMG_3975"],
         "lobby"    :["IMG_3983","IMG_3986","IMG_3989","IMG_3992","IMG_3993"],
         "room-standard":["IMG_3995","IMG_3998","IMG_4001","IMG_4006","IMG_4010"],

@@ -336,9 +336,14 @@ function renderGalleryItem(photos, src, label, group, branchName) {
   const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".ogg");
   const full = fullPath(photos, src);
   if (isVideo) {
+    const fallback = src.endsWith(".webm") ? full.replace(/\.webm$/i, ".mp4") : full;
+    const poster = photos.videoPoster ? fullPath(photos, photos.videoPoster) : "";
     return `
       <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
-        <video class="gal-video-preview" src="${full}" autoplay loop muted playsinline></video>
+        <video class="gal-video-preview" autoplay loop muted playsinline preload="auto"${poster ? ` poster="${poster}"` : ""}>
+          <source src="${full}" type="video/webm">
+          ${fallback !== full ? `<source src="${fallback}" type="video/mp4">` : ""}
+        </video>
         <div class="video-badge"><span class="badge-icon">▶</span> Video</div>
       </button>`;
   }
@@ -611,7 +616,13 @@ function openLightbox(src){
 
   if (isVideo) {
     img.style.display = "none";
-    video.src = src;
+    video.innerHTML = "";
+    if (src.endsWith(".webm")) {
+      video.insertAdjacentHTML("beforeend", `<source src="${src}" type="video/webm"><source src="${src.replace(/\.webm$/i, ".mp4")}" type="video/mp4">`);
+      video.removeAttribute("src");
+    } else {
+      video.src = src;
+    }
     video.style.display = "block";
     video.play().catch(err => console.log("Video play failed:", err));
   } else {
