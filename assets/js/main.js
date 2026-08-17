@@ -334,18 +334,13 @@ function countPhotos(b){
 /** Renders a gallery item button. Supports both images and autoplaying looping videos. */
 function renderGalleryItem(photos, src, label, group, branchName) {
   const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".ogg");
+  const full = fullPath(photos, src);
   if (isVideo) {
-    const isMobile = window.matchMedia?.("(max-width: 767px)").matches === true;
-    const mobileVideo = isMobile && photos.videoMobile;
-    const full = mobileVideo ? fullPath(photos, mobileVideo.webm) : fullPath(photos, src);
-    const fallback = mobileVideo
-      ? fullPath(photos, mobileVideo.mp4)
-      : (src.endsWith(".webm") ? full.replace(/\.webm$/i, ".mp4") : full);
+    const fallback = src.endsWith(".webm") ? full.replace(/\.webm$/i, ".mp4") : full;
     const poster = photos.videoPoster ? fullPath(photos, photos.videoPoster) : "";
-    const preload = isMobile ? "metadata" : "auto";
     return `
       <button class="gal-item video-gal-item" data-full="${full}" ${group ? `data-group="${group}"` : ""} aria-label="Play video of ${branchName}">
-        <video class="gal-video-preview" autoplay loop muted playsinline preload="${preload}"${poster ? ` poster="${poster}"` : ""}>
+        <video class="gal-video-preview" autoplay loop muted playsinline preload="auto"${poster ? ` poster="${poster}"` : ""}>
           <source src="${full}" type="video/webm">
           ${fallback !== full ? `<source src="${fallback}" type="video/mp4">` : ""}
         </video>

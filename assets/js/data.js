@@ -162,10 +162,6 @@ const BRANCHES = [
       card:"IMG_3974.jpg",
       hasThumb:false,
       videoPoster:"shelton-rawalpindi-poster.webp",
-      videoMobile:{
-        webm:"shelton-rawalpindi-mobile.webm",
-        mp4:"shelton-rawalpindi-mobile.mp4"
-      },
       groups:{
         "video"    :["shelton-rawalpindi-web.webm"],
         "exterior" :["IMG_3974","IMG_3975"],
